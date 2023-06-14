@@ -38,7 +38,7 @@ export default function MarsGenerator() {
     async function fetchPhoto() {
       try {
         const res = await fetch(
-          `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${date.format(
+          `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${dayjs.format(
             "YYYY-MM-DD"
           )}&api_key=${KEY}`
         );
@@ -49,7 +49,7 @@ export default function MarsGenerator() {
         console.log(error);
       }
     }
-  }, [date]);
+  }, [dayjs]);
   const numOfPages = Math.ceil((pictureData?.length || 0) / imagePerPage);
 
   return (
